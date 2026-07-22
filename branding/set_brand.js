@@ -18,28 +18,34 @@ const path = require("path");
 const deepmerge = require("deepmerge");
 const { Validator } = require("jsonschema");
 const { ConfigParser } = require("cordova-common");
-const {xml2js, js2xml} = require("xml-js");
-const {Command, Option} = require("commander");
-const {execSync} = require("child_process");
+const { xml2js, js2xml } = require("xml-js");
+const { Command, Option } = require("commander");
+const { execSync } = require("child_process");
 
 let console_log = "";
 
 function execute(options, command) {
-    const {brand, platforms} = options;
+    const { brand, platforms } = options;
 
     try {
         const config = loadJSON(`branding/brands/${brand}/config.json`);
         cleanUpOldConfigXmlStaticResourceEntries();
         setDirectoryContent("resources", `branding/brands/${brand}/resources`);
         setDirectoryContent("src/assets", `branding/brands/${brand}/assets`);
-        setDirectoryContent("src/assets/scormplayer", "branding/common/scormplayer");
+        setDirectoryContent(
+            "src/assets/scormplayer",
+            "branding/common/scormplayer",
+        );
         linkFile("build.json", `branding/brands/${brand}/build.json`);
-        linkFile("src/environments/features.json", `branding/brands/${brand}/features.json`);
+        linkFile(
+            "src/environments/features.json",
+            `branding/brands/${brand}/features.json`,
+        );
         generateServerConfigFile(brand, config);
         setValuesInProjectConfig(config);
         generateLangFiles(brand);
         refreshPlatforms(platforms);
-    } catch(e) {
+    } catch (e) {
         console_log += e.stack;
         throw e;
     } finally {
@@ -51,15 +57,27 @@ function run() {
     const command = new Command();
     return command
         .name("setbrand")
-        .version(getPackageVersion(), "-v, --version", "Prints the set brand cli version")
-        .usage("-- [options]")
-        .addOption(new Option("-b, --brand [brand]", "The brand which should get installed.")
-            .choices(getAvailableBrands())
-            .makeOptionMandatory(true)
+        .version(
+            getPackageVersion(),
+            "-v, --version",
+            "Prints the set brand cli version",
         )
-        .addOption(new Option("-p, --platforms [platforms]", "The platforms which should get added, valid options are 'a' (Android) and 'i' (iOS).")
-            .default("ai")
-            .choices(["a", "i", "ai", "ia", "none"])
+        .usage("-- [options]")
+        .addOption(
+            new Option(
+                "-b, --brand [brand]",
+                "The brand which should get installed.",
+            )
+                .choices(getAvailableBrands())
+                .makeOptionMandatory(true),
+        )
+        .addOption(
+            new Option(
+                "-p, --platforms [platforms]",
+                "The platforms which should get added, valid options are 'a' (Android) and 'i' (iOS).",
+            )
+                .default("ai")
+                .choices(["a", "i", "ai", "ia", "none"]),
         )
         .showHelpAfterError(true)
         .showSuggestionAfterError(true)
@@ -71,8 +89,10 @@ function run() {
 
 function getAvailableBrands() {
     const brandBasePath = path.join(process.cwd(), "branding", "brands");
-    return FS.readdirSync(brandBasePath, {encoding: "utf8", withFileTypes: false})
-        .filter((it) => !it.startsWith('.'));
+    return FS.readdirSync(brandBasePath, {
+        encoding: "utf8",
+        withFileTypes: false,
+    }).filter((it) => !it.startsWith("."));
 }
 
 // generate "src/assets/config.json"
@@ -80,13 +100,20 @@ function generateServerConfigFile(brand, config) {
     const jsonValidator = new Validator();
     const schema = jsonValidator.addSchema(
         loadJSON("branding/common/config/server.config.schema.json", "utf8"),
-        "https://www.ilias-pegasus.de/app/draft-07/schema/server.config.schema.json"
+        "https://www.ilias-pegasus.de/app/draft-07/schema/server.config.schema.json",
     );
-    const fullConfig = loadJSON("branding/common/config/server.config.json", "utf8");
-    const result = jsonValidator.validate(fullConfig, schema, {throwError: false});
+    const fullConfig = loadJSON(
+        "branding/common/config/server.config.json",
+        "utf8",
+    );
+    const result = jsonValidator.validate(fullConfig, schema, {
+        throwError: false,
+    });
 
     for (const validationError of result.errors) {
-        consoleError(`Validation of "branding/common/config/server.config.json" failed with message "${validationError.message}" for property "${validationError.property}".`);
+        consoleError(
+            `Validation of "branding/common/config/server.config.json" failed with message "${validationError.message}" for property "${validationError.property}".`,
+        );
     }
 
     if (result.errors.length > 0) {
@@ -95,8 +122,11 @@ function generateServerConfigFile(brand, config) {
     }
 
     const config_server = fullConfig.installations;
-    const config_out = { "installations": [] };
-    const installationMap = config_server.reduceRight((col, it) => col.set(it.id, it), new Map());
+    const config_out = { installations: [] };
+    const installationMap = config_server.reduceRight(
+        (col, it) => col.set(it.id, it),
+        new Map(),
+    );
     const brandInstallationIds = config.ilias_installation_ids;
 
     const missingIds = [];
@@ -127,9 +157,7 @@ function getPackageVersion() {
 
 // set values in "config.xml"
 function setValuesInProjectConfig(config) {
-
     const cordovaConf = new ConfigParser("config.xml");
-
 
     // for each entry, the 'setValueInTag'-method is called until the tag was found once
     const androidId = config.projectConfig.androidId || config.projectConfig.id;
@@ -138,11 +166,14 @@ function setValuesInProjectConfig(config) {
      * @type string
      */
     let name = config.projectConfig.name;
-    name = name.replace(' ', '-');
+    name = name.replace(" ", "-");
 
     cordovaConf.setPackageName(config.projectConfig.id);
     cordovaConf.doc.getroot().attrib["android-packageName"] = androidId;
-    cordovaConf.setGlobalPreference("AppendUserAgent", `${name}/${getPackageVersion()}`);
+    cordovaConf.setGlobalPreference(
+        "AppendUserAgent",
+        `${name}/${getPackageVersion()}`,
+    );
     cordovaConf.setName(config.projectConfig.name);
     cordovaConf.setDescription(config.projectConfig.description);
     cordovaConf.write();
@@ -150,7 +181,7 @@ function setValuesInProjectConfig(config) {
 
 // generate language-files from a global and a brand-specific source
 function generateLangFiles(brand) {
-    FS.readdirSync("branding/common/i18n").forEach(function(file) {
+    FS.readdirSync("branding/common/i18n").forEach(function (file) {
         let lng_tree = loadJSON(`branding/common/i18n/${file}`);
         let path_lng_mod = `branding/brands/${brand}/assets/i18n/${file}`;
 
@@ -159,23 +190,26 @@ function generateLangFiles(brand) {
         }
 
         const path = "src/assets/i18n";
-        if (!FS.existsSync(path))
-            FS.mkdirSync(path);
+        if (!FS.existsSync(path)) FS.mkdirSync(path);
         writeJSON(`${path}/${file}`, lng_tree);
     });
 }
 
 // remove platforms-directory and add the platforms from scratch
 function refreshPlatforms(platforms) {
-    if(platforms === undefined) return;
+    if (platforms === undefined) return;
     deleteDirSync("platforms");
 
-    if(platforms.indexOf("a") !== -1)
+    if (platforms.indexOf("a") !== -1)
         runShell("npx ionic cordova platform add android");
 
-    if(platforms.indexOf("i") !== -1)
-        if (OS.platform() === "darwin") runShell("npx ionic cordova platform add ios");
-        else consoleOut(`did not add ios-platform on the operating system "${OS.platform()}"`);
+    if (platforms.indexOf("i") !== -1)
+        if (OS.platform() === "darwin")
+            runShell("npx ionic cordova platform add ios");
+        else
+            consoleOut(
+                `did not add ios-platform on the operating system "${OS.platform()}"`,
+            );
 }
 
 // run cmd as a shell-script
@@ -187,7 +221,9 @@ function runShell(cmd) {
     } catch (err) {
         consoleOut(`err ${err}`);
         consoleOut(`stderr ${err}`);
-        throw new Error(`failed when running command "${cmd}", see the output above for details`);
+        throw new Error(
+            `failed when running command "${cmd}", see the output above for details`,
+        );
     }
 }
 
@@ -206,8 +242,10 @@ function unlinkFile(path) {
 
 // set directory at target to the one at source
 function setDirectoryContent(path_to, path_from) {
-    if(!FS.existsSync(path_from))
-        throw new Error(`(set_brand.js) the directory '${path_from}' for '${path_to}' does not exist`);
+    if (!FS.existsSync(path_from))
+        throw new Error(
+            `(set_brand.js) the directory '${path_from}' for '${path_to}' does not exist`,
+        );
     deleteDirSync(path_to);
     FS.mkdirSync(path_to);
     copyDirSync(path_from, path_to);
@@ -216,14 +254,14 @@ function setDirectoryContent(path_to, path_from) {
 // delete directory
 function deleteDirSync(path) {
     if (FS.existsSync(path)) {
-        FS.rmdirSync(path, {recursive: true, maxRetries: 3});
+        FS.rmdirSync(path, { recursive: true, maxRetries: 3 });
     }
 }
 
 // copy directory
 function copyDirSync(path_from, path_to) {
     if (FS.existsSync(path_from)) {
-        FS.readdirSync(path_from).forEach(function(file) {
+        FS.readdirSync(path_from).forEach(function (file) {
             let itemPath_from = path_from + "/" + file;
             let itemPath_to = path_to + "/" + file;
             if (FS.lstatSync(itemPath_from).isDirectory()) {
@@ -255,15 +293,19 @@ function writeJSON(file, data) {
 
 function cleanUpOldConfigXmlStaticResourceEntries() {
     const xml = FS.readFileSync("config.xml", "utf8");
-    const tree = xml2js(xml, {compact: true, spaces: 4});
+    const tree = xml2js(xml, { compact: true, spaces: 4 });
     const platforms = tree.widget.platform;
     delete tree.widget.icon;
     delete tree.widget.splash;
-    for(const platform of platforms) {
+    for (const platform of platforms) {
         delete platform.splash;
         delete platform.icon;
     }
-    FS.writeFileSync("config.xml", js2xml(tree, {compact: true, spaces: 4}), "utf8");
+    FS.writeFileSync(
+        "config.xml",
+        js2xml(tree, { compact: true, spaces: 4 }),
+        "utf8",
+    );
 }
 
 // write msg to console and add it to console_log

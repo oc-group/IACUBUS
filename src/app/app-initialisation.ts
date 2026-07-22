@@ -32,6 +32,8 @@ export class AppInitialisation {
         "en",
         "it",
         "ar",
+        "az",
+        "mn",
     ]);
 
     constructor(
@@ -42,7 +44,7 @@ export class AppInitialisation {
         @Inject(DB_MIGRATION) private readonly migration: DBMigration,
         private readonly translate: TranslateService,
         private readonly language: LanguageService,
-        private readonly statusBar: StatusBar
+        private readonly statusBar: StatusBar,
     ) {}
 
     async init(): Promise<void> {
@@ -61,7 +63,7 @@ export class AppInitialisation {
 
     private initStaticLegacyDatabaseMembers(): void {
         SQLiteDatabaseService.connection = getConnection(
-            PEGASUS_CONNECTION_NAME
+            PEGASUS_CONNECTION_NAME,
         );
     }
 
@@ -95,7 +97,7 @@ export class AppInitialisation {
                 .map((it) => it.split("-")[0])
                 .reduce(
                     (col: Set<string>, child: string) => col.add(child),
-                    new Set<string>()
+                    new Set<string>(),
                 ); // Sets in js are ordered
 
             let lng: string = this.FALLBACK_LANGUAGE;

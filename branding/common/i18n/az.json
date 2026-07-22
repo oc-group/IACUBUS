@@ -1,0 +1,339 @@
+{
+    "test": "le test",
+    "back": "Geri",
+    "Synchronize": "Sinxronizasiya et",
+    "synchronize": "Sinxronizasiya et",
+    "save": "yadda saxla",
+    "Save": "Yadda saxla",
+    "User": "İstifadəçi",
+    "user": "istifadəçi",
+    "cancel": "Ləğv et",
+    "general": "Ümumi",
+    "new": "Yeni",
+    "updated": "Yenilənib",
+    "synchronisation_in_progress": "Senkronizasiya davam edir",
+    "deleting_files": "Fayllar silinir",
+    "something_went_wrong": "Bir xəta baş verdi, sonra yenidən cəhd edin.",
+    "menu": "Menyu",
+    "remove": "Sil",
+    "no_items": "Hazırda heç bir qeyd yoxdur.",
+    "yes": "Bəli",
+    "no": "Xeyr",
+    "no_title": "Başlıq yoxdur",
+    "close": "Bağla",
+    "today": "Bu gün",
+    "yesterday": "Dünən",
+    "repository": "Depozitar",
+    "courses": "Kurslar",
+    "map": "Xəritə",
+    "content": "Məzmun",
+    "Version": "Versiya",
+    "privacy": "iacubus-privacy-policy",
+    "datasecurity": {
+        "title": "Məxfilik siyasəti"
+    },
+    "object-list": {
+        "title": "Mənim Kurslarım və Qruplarım",
+        "content": "Məzmun",
+        "offline": "Cihazınız oflayndır. Yeniləmək üçün aşağı çəkin və ya sevimlilərə keçin.",
+        "downloading": "Yüklənir",
+        "no_items": "Seçilmişlər burada görünür və yüklənir. Seçilmişlər internet bağlantısı olmadan da oflayn mövcuddur"
+    },
+    "page-layout": {
+        "group": "Bu qrup üçün əlavə məlumat mövcuddur.",
+        "course": "Bu kurs üçün əlavə məlumat mövcuddur.",
+        "folder": "Bu qovluq üçün əlavə məlumat mövcuddur.",
+        "default": "Bu obyekt üçün əlavə məlumat mövcuddur."
+    },
+    "timeline": {
+        "course": "Bu kurs üçün zaman xətti mövcuddur.",
+        "group": "Bu qrup üçün zaman xətti mövcuddur.",
+        "default": "Bu obyekt üçün zaman xətti mövcuddur."
+    },
+    "favorites": {
+        "title": "Seçilmişlər"
+    },
+    "news": {
+        "title": "Xəbərlər"
+    },
+    "home": {
+        "title": "Ana səhifə"
+    },
+    "new-objects": {
+        "title": "Yeni məzmun",
+        "no_new_items": "Yeni məzmun yoxdur.",
+        "mark_as_seen": "Görüldü kimi işarələ"
+    },
+    "settings": {
+        "title": "Ayarlar",
+        "language": "Dil",
+        "downloadSize": "Yükləmə üçün faylların maksimum ölçüsü (MB)",
+        "downloadWLAN": "Yalnız WLAN-da yüklə",
+        "quotaSize": "Maksimum kvota ölçüsü (MB)",
+        "settings_saved": "Ayarlar yadda saxlanıldı",
+        "files_deleted": "Fayllar uğurla silindi",
+        "delete_user_local_data_title": "İstifadəçi {{username}} üçün lokal faylları sil",
+        "delete_user_local_data_text": "Bu istifadəçi üçün cihazdakı bütün lokal faylları silmək istədiyinizə əminsiniz?",
+        "delete_all_files": "Cihazda bütün lokal faylları sil",
+        "delete_all_files_text": "Bu cihazda bütün istifadəçilərin bütün lokal fayllarını silmək istədiyinizə əminsiniz?",
+        "summary": "Xülasə",
+        "total": "Cəmi",
+        "users": "İstifadəçi",
+        "deleting_files": "Fayllar silinir",
+        "downloadOnStart": "Favoritləri başlanğıcda yüklə"
+    },
+    "logout": {
+        "title": "Çıxış",
+        "logged_out": "Çıxış uğurla tamamlandı"
+    },
+    "common": {
+        "synchronize": "sinxronizasiya et"
+    },
+    "download": {
+        "title": "Yüklə",
+        "something_went_wrong": "Bir xəta baş verdi! Tezliklə yenidən cəhd edin."
+    },
+    "actions": {
+        "view_in_ilias": "ILIAS-da bax",
+        "mark_as_favorite": "Favorit kimi işarələ",
+        "download": "Yüklə / Yenilə",
+        "mark_as_offline_available": "Oflayn istifadə üçün işarələ",
+        "unmark_as_offline_available": "Oflayn istifadə üçün işarəni sil",
+        "synchronize": "Sinxronizasiya et",
+        "remove_local_files": "Yerli faylları sil",
+        "removed_local_files": "Yerli fayllar silindi",
+        "remove_local_file": "Yerli faylı sil",
+        "removed_local_file": "Yerli fayl silindi",
+        "remove_local_learnplace": "Yerli öyrənmə məkanını sil",
+        "remove_local_learnplace_failed": "Öyrənmə məkanının silinməsi uğursuz oldu.",
+        "removed_local_learnplace": "Yerli öyrənmə məkanı silindi",
+        "download_and_open_in_external_app": "Yüklə və xarici tətbiqlə aç",
+        "unmark_as_favorite": "Sevimlilərdən sil",
+        "open_in_external_app": "Xarici tətbiqlə aç",
+        "show_details": "Təfərrüatları göstər",
+        "sync_incomplete": "Bir xəta baş verdi: Sinxronizasiya tamamlanmayıb.",
+        "offline_and_no_local_file": "Siz oflinesiniz və yerli fayl mövcud deyil.",
+        "unhandled_add_to_favorite_exception_workaround": "Məlumatlar toplanır.",
+        "download_without_wlan": "WLAN olmadan yüklə",
+        "download_without_wlan_continue": "Hazırda WLAN-a qoşulmamısınız. Yenə də yükləmək istəyirsiniz?",
+        "download_without_disk_quota": "Diskdə yer yoxdur",
+        "download_without_disk_quota_text": "Bu faylı yükləsəniz, ayarlarda göstərilən disk yerini aşacaqsınız. Yenə də yükləmək istəyirsiniz?",
+        "download_with_file_too_big": "Fayl çox böyükdür",
+        "download_with_file_too_big_text": "Bu fayl ayarlarda göstərilən maksimum fayl ölçüsündən böyükdür. Davam etmək istəyirsiniz?",
+        "remove_local_files_in": "{{title}} daxilində faylları sil",
+        "remove_local_files_in_text": "Yüklənmiş bütün faylları silmək istədiyinizə əminsiniz?",
+        "download_successful": "Yükləmə uğurla tamamlandı",
+        "cant_open_file": "Bu fayl növünü aça biləcək tətbiq yoxdur.",
+        "file_error": "Fayl işlənərkən problem yarandı.",
+        "server_not_reachable": "Serverə qoşula bilmirik, zəhmət olmasa bir az sonra yenidən cəhd edin və ya yenidən daxil olun.",
+        "server_response_validation_error": "Serverlə əlaqə problemi, zəhmət olmasa ən son tətbiqdən istifadə etdiyinizə əmin olun və yenidən cəhd edin. Çıxış edib yenidən daxil olmağa çalışın."
+    },
+    "details": {
+        "last_update": "Son yeniləmə",
+        "availability": "Əlçatanlıq",
+        "size": "Ölçü",
+        "version": "Versiya",
+        "local_version_date": "Cihazda faylın tarixi",
+        "remote_version_date": "ILIAS-da faylın tarixi",
+        "used_disk_space": "İstifadə olunan disk sahəsi",
+        "potentially_used_disk_space": "Sinxronizasiyadan sonra təxmini disk sahəsi istifadəsi",
+        "offline_available": "Oflayn mövcuddur",
+        "availabilities": {
+            "needs_download": "Yükləmə tələb olunur",
+            "up-to-date": "Aktualdır",
+            "needs_update": "Yeniləmə tələb olunur"
+        }
+    },
+    "sync": {
+        "sync_already_running": "Sinxronizasiya artıq davam edir.",
+        "last_sync": "Son sinxronizasiya",
+        "fetching_metadata": "Metaməlumatlar alınır",
+        "fetching_news": "Xəbərlər alınır",
+        "title": "Sinxronizasiya",
+        "sync_incomplete": "Bir xəta baş verdi: Sinxronizasiya tam olmaya bilər.",
+        "stopped_no_wlan": "Yeni və ya yenilənmiş fayllar sinxronizasiya edilə bilmir. Zəhmət olmasa, WLAN-a qoşulun",
+        "files_too_big": "Yeni və ya yenilənmiş fayllar sinxronizasiya edilə bilmir, onlar maksimum kvotanı aşır. Zəhmət olmasa, ayarlarda kvotanı artırın və ya bəzi faylları silin.",
+        "object_synced": "{{title}} uğurla sinxronizasiya edildi.",
+        "success": "Sinxronizasiya tamamlandı.",
+        "download": "Yüklə",
+        "sync_finished_text": "Sinxronizasiya başa çatdı. Ümumilikdə {{totalItems}} işarələnmiş fayl var. {{updated}} fayl ən son versiyaya yükləndi. {{uptodate}} fayl isə artıq yenidir və yüklənməyə ehtiyac yoxdur.",
+        "some_files_were_too_big": "Bəzi fayllar çox böyükdür. Ayarlarda maksimal fayl ölçüsünü artırın və ya faylları əl ilə yükləyin.",
+        "no_more_space": "Disk sahəsi dolub və bəzi fayllar yüklənə bilmədi. Bəzi faylları silin və ya ayarlarda sinxronizasiya üçün mövcud disk sahəsini artırın.",
+        "pull_to_sync": "Yeniləmək üçün aşağı çəkin",
+        "remove_from_favorites": "Sevimlilərdən sil",
+        "load_now": "İndi yüklə",
+        "ok": "Ok",
+        "open_downloads_title": "Yükləmələri aç",
+        "open_downloads_text_sng": "Bu sevimlinin yüklənməsi tətbiq bağlandığı üçün uğursuz oldu:",
+        "open_downloads_text_plr": "Bu NUM sevimlinin yüklənməsi tətbiq bağlandığı üçün uğursuz oldu:"
+    },
+    "login": {
+        "title": "Daxil ol",
+        "hello": "{{app_name}}-a xoş gəlmisiniz!",
+        "instructions": "Təşkilatınızı seçin",
+        "instructions2": "Təşkilatınızı seçin",
+        "login": "Daxil ol",
+        "offline_title": "İnternet bağlantısı yoxdur",
+        "offline_content": "Daxil olmaq üçün cihazınız internetə qoşulmalıdır.",
+        "ok": "Seç",
+        "dismiss": "Ləğv et"
+    },
+    "object_type": {
+        "crs": "Kurs",
+        "crsr": "Kurs İstinadı",
+        "grp": "Qrup",
+        "grpr": "Qrup İstinadı",
+        "frm": "Forum",
+        "fold": "Qovluq",
+        "sess": "Sessiya",
+        "catr": "Kateqoriya İstinadı",
+        "cat": "Kateqoriya",
+        "book": "Rezervasiya Hovuzu",
+        "chatr": "Çat Otağı",
+        "file": "Fayl",
+        "webr": "Veb link",
+        "feed": "Veb lent",
+        "wiki": "Viki",
+        "blog": "Bloq",
+        "lm": "Tədris Modulu",
+        "htlm": "Tədris Modulu",
+        "sahs": "Tədris Modulu",
+        "iass": "Fərdi Qiymətləndirmə",
+        "glo": "Lüğət",
+        "dcl": "Məlumat Toplama",
+        "bibl": "Biblioqrafiya",
+        "mcst": "Media Yayımı",
+        "mep": "Media Hovuzu",
+        "exc": "Tapşırıq",
+        "tst": "Test",
+        "qpl": "Suallar Hovuzu Testi",
+        "mass": "Fərdi Qiymətləndirmə",
+        "poll": "Səsvermə",
+        "svy": "Sorğu",
+        "spl": "Suallar Bankı Sorğusu",
+        "prtt": "Portfolio Şablonu",
+        "xlel": "Öyrənmə Yeri",
+        "xlvo": "Canlı Səsvermə",
+        "xoct": "OpenCast",
+        "xtst": "Test Depoziti Obyekti",
+        "xvid": "İnteraktiv Video",
+        "xpdl": "Etherpad",
+        "xavc": "Adobe Connect Görüşü",
+        "xflc": "Flaşkartlar",
+        "chtr": "Söhbət otağı",
+        "xxco": "Uzaqdan məzmun",
+        "xsrl": "Learnplace"
+    },
+    "message": {
+        "back_to_exit": "Çıxmaq üçün yenidən geri düyməsini basın."
+    },
+    "learnplace": {
+        "map": {
+            "no_map": "Bu öyrənmə məkanının xəritəsi yoxdur",
+            "too_far_away": "Xəritəyə baxmaq üçün öyrənmə məkanından çox uzaqdasınız"
+        },
+        "block": {
+            "no_content": "Bu öyrənmə məkanında məzmun yoxdur",
+            "text": {
+                "too_far_away": "Bu mətni oxumaq üçün öyrənmə məkanından çox uzaqdasınız"
+            },
+            "picture": {
+                "too_far_away": "Bu şəkilə baxmaq üçün öyrənmə məkanından çox uzaqdasınız"
+            },
+            "link": {
+                "too_far_away": "Bu linkə klikləmək üçün öyrənmə məkanından çox uzaqdasınız",
+                "no_access": "Bu linkə giriş hüququnuz yoxdur"
+            },
+            "video": {
+                "too_far_away": "Bu videonu oynatmaq üçün öyrənmə məkanından çox uzaqdasınız"
+            },
+            "accordion": {
+                "too_far_away": "Bu akordeona baxmaq üçün öyrənmə məkanından çox uzaqdasınız"
+            }
+        }
+    },
+    "fallback": {
+        "browser": "{{app_name}} tətbiqindən çıxırsınız",
+        "browser_ok": "OK, başlayaq!",
+        "browser_no": "Xeyr, geri qayıt!",
+        "synchronization": "Xoş gəlmisiniz!",
+        "synchronization_subtitle": "Zəhmət olmasa, ILIAS hesabınızı sinxronizasiya etdiyimizə görə bir neçə saniyə gözləyin.",
+        "generic": {
+            "loading": "Yüklənir",
+            "loading_subtitle": "Bir dəqiqə gözləyin. Məzmunun yüklənməsi bir az vaxt ala bilər."
+        },
+        "learnplace": {
+            "loading": "Learnplace",
+            "loading_subtitle": "Bir dəqiqə gözləyin. Əgər learnplace çoxlu məzmun ehtiva edirsə, yüklənməsi bir az vaxt ala bilər."
+        },
+        "learningmodule": {
+            "loading": "Tədris Modulu",
+            "loading_subtitle": "Bir dəqiqə gözləyin. Əgər tədris modulu çoxlu məzmun ehtiva edirsə, yüklənməsi bir az vaxt ala bilər."
+        }
+    },
+    "onboarding": {
+        "title1": "Bu tətbiqin köməyi ilə siz:",
+        "function1": "ILIAS kurslarınıza smartfonunuzdan daxil ola bilərsiniz.",
+        "function2": "Kurslarınızı və fayllarınızı oflayn rejimdə əlçatan edə bilərsiniz.",
+        "function3": "Bir dəfə daxil olun və daxil qalmış vəziyyətdə qalın.",
+        "title2": "Mərkəzsizləşdirilmiş tətbiq",
+        "concept1": "{{app_name}} tətbiqi sizi təhsil müəssisənizin, universitetinizin və ya məktəbinizin ILIAS qurğusuna qoşur.",
+        "concept2": "Əgər sizin müəssisə hələ qoşulmayıbsa, bizimlə əlaqə saxlayın",
+        "title3": "Məlumatlarınız təhlükəsizdir!",
+        "datasecurity1": "Məlumatlarınız yalnız cihazınızda saxlanılacaq. Tətbiq heç bir şəxsi məlumat toplamır. Ətraflı yoxlamaq istəsəniz, burada",
+        "datasecurity2": "iacubus-privacy-policy",
+        "datasecurity3": "{{app_name}} açıq mənbə layihəsidir. Tətbiqin nə etdiyini özünüz görmək istəyirsinizsə, kodu burada görə bilərsiniz:",
+        "next": "növbəti",
+        "start": "Başlayaq"
+    },
+    "info": {
+        "title": "Məlumat",
+        "guide": "Bələdçi",
+        "instructions1": "Əgər siz 'Mənim Kurslarım və Qruplarım' Ana səhifəsindəsinizsə, kurs və qrupları 'Offline mövcud' kimi işarələyə bilərsiniz. Onlar boz buludla işarələnir. Fayllar sinxronizasiya olunduqdan sonra bulud mavi olur.",
+        "instructions2": "Sinxronizasiya avtomatik olaraq tətbiq hər başladıqda və ya bir kurs Ofline Mövcud olaraq işarələndikdə başlayacaq. Əl ilə sinxronizasiyanı isə 'Mənim Kurslarım və Qruplarım' səhifəsini aşağı çəkərək (Yeniləmək üçün Çəkin) başlada bilərsiniz.",
+        "version-card": {
+            "title": "ILIAS-Pegasus əsasında",
+            "content": "Versiya"
+        },
+        "reporting-card": {
+            "title": "Təkliflər və səhvlərlə bağlı qeydlər",
+            "content": "Səhv tapdınız? Zəhmət olmasa tətbiqin təkmilləşdirilməsinə kömək edin. Əlaqə saxlayın"
+        },
+        "reporting-card-zwh": {
+            "subtitle": "Təchizat və dizayn",
+            "content": "Əlaqə"
+        },
+        "content-card": {
+            "title": "Məzmun qeydi",
+            "content": "Məzmunlara diqqətlə nəzarət etməyimizə baxmayaraq, xarici keçidlərin məzmununa görə heç bir məsuliyyət daşımırıq. Keçid verilmiş səhifələrin məzmununa yalnız həmin səhifələrin operatorları cavabdehdir. Tətbiqin optimallaşdırılması üçün istifadəçi məlumatları anonim şəkildə qeyd olunur və təhlil edilir."
+        },
+        "stura-card": {
+            "title": "Tələbə şurası",
+            "subtitle": "Maliyyələşmə",
+            "content": "Tətbiqin ilk versiyasının spesifikasiyası və hazırlanması Freiburg Universitetinin tələbə şurasının tələbə təklifi büdcəsi ilə maliyyələşdirilmişdir."
+        },
+        "freiburg-card": {
+            "title": "Məlumat Mərkəzi",
+            "subtitle": "Layihə rəhbəri",
+            "content": "Freiburg Universitetinin məlumat mərkəzi tətbiqin spesifikasiyası və həyata keçirilməsi mərhələsinə rəhbərlik etmişdir."
+        },
+        "marburg-card": {
+            "title": "Universitet Məlumat Mərkəzi",
+            "subtitle": "ILIAS RESTPlugin üçün məsul şəxs",
+            "content": "Philipps-Universitet Marburqun universitet kompüter mərkəzi ILIAS RESTPlugin ilə ILIAS-a interfeys təmin edir."
+        },
+        "sig-card": {
+            "subtitle": "İcma və gələcək inkişafın koordinasiyası",
+            "content": "ILIAS Mobile Xüsusi Maraqlı Qrupu (SIG) tətbiqin gələcək inkişafının koordinasiyasına cavabdehdir və tətbiq ətrafında müzakirələr üçün məkan təklif edir."
+        },
+        "sturai-card": {
+            "subtitle": "Yaradıcılar",
+            "content": "Tətbiq fluxlabs AG tərəfindən hazırlanmışdır."
+        },
+        "about-card": {
+            "title": "Haqqında",
+            "subtitle": "Tətbiqin hazırlanması və saxlanılması",
+            "content": "Tətbiq açıq mənbəli ILIAS-PEGASUS həllinə əsaslanır və hazırda NATO DEEP eAcademy IACUBUS Komandası tərəfindən saxlanılır və inkişaf etdirilir."
+        }
+    }
+}
