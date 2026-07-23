@@ -19,9 +19,9 @@ The following tools are needed to build and deploy the app.
 
 This project requires:
 
--   Node 18.20
--   Java 11
--   Gradle 8.14
+- Node 22.22
+- Java 17
+- Gradle 8.14
 
 #### Xcode:
 
@@ -191,15 +191,13 @@ As soon as you have all your profiles create an Archive in `Xcode -> Product -> 
 npx ionic cordova build android --prod --release
 ```
 
-Change target SDK version in Android Studio settings, right click on `app` and select `Open Module Settings`. Then select `Default Config` tab and edit `Target SDK Version` option to `34`.
-
 Create a key, sign your application and upload it following the ionic guide: https://ionicframework.com/docs/deployment/play-store
 
 ### Build With
 
--   [Cordova](https://cordova.apache.org/) - Is powering the app.
--   [Ionic](https://ionicframework.com/) - To build a responsive UI.
--   [Typescript](https://www.typescriptlang.org/) - Helps maintaining large code bases and catch type issues early.
+- [Cordova](https://cordova.apache.org/) - Is powering the app.
+- [Ionic](https://ionicframework.com/) - To build a responsive UI.
+- [Typescript](https://www.typescriptlang.org/) - Helps maintaining large code bases and catch type issues early.
 
 ## Versioning
 
