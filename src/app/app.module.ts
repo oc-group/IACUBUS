@@ -19,7 +19,6 @@ import { InAppBrowser } from "@ionic-native/in-app-browser/ngx";
 import { WebView } from "@ionic-native/ionic-webview/ngx";
 import { Network } from "@ionic-native/network/ngx";
 import { SafariViewController } from "@ionic-native/safari-view-controller/ngx";
-import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import { SQLite } from "@ionic-native/sqlite/ngx";
 import { StatusBar } from "@ionic-native/status-bar/ngx";
 import { UniqueDeviceID } from "@ionic-native/unique-device-id/ngx";
@@ -709,7 +708,6 @@ import { CssStyleService } from "./services/theme/css-style.service";
         Network,
         SQLite,
         PegasusHttpClient,
-        SplashScreen,
         HTTP,
         WebView,
         UserStorageService,

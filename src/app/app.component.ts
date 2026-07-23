@@ -3,7 +3,6 @@ import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { AppVersion } from "@ionic-native/app-version/ngx";
 /** ionic-native */
-import { SplashScreen } from "@ionic-native/splash-screen/ngx";
 import {
     ModalController,
     NavController,
@@ -23,12 +22,6 @@ import { Logging } from "./services/logging/logging.service";
 import { SynchronizationService } from "./services/synchronization.service";
 /** misc */
 import getMessage = Logging.getMessage;
-
-interface NavigatorSplashScreen {
-    splashscreen: {
-        hide(): void;
-    };
-}
 
 @Component({
     selector: "app-root",
@@ -50,7 +43,6 @@ export class AppComponent {
     constructor(
         private readonly router: Router,
         private readonly sync: SynchronizationService,
-        private readonly splashScreen: SplashScreen,
         private readonly modal: ModalController,
         private readonly auth: AuthenticationProvider,
         private readonly appVersionPlugin: AppVersion,
@@ -61,7 +53,6 @@ export class AppComponent {
         private readonly translate: TranslateService,
         private readonly networkProvider: NetworkProvider
     ) {
-        this.splashScreen.hide();
         this.initializeApp();
     }
 
@@ -102,9 +93,6 @@ export class AppComponent {
                 () =>
                     `Could not initialize app. Error type: ${errorType} Message: ${message}`
             );
-        } finally {
-            this.log.trace(() => "Hide splash screen");
-            (navigator as unknown as NavigatorSplashScreen).splashscreen.hide();
         }
     }
 
