@@ -227,6 +227,7 @@ export class SynchronizationService {
      */
     async loadAllOfflineContent(): Promise<void> {
         if (SynchronizationService.state.loadingOfflineContent) return;
+        if (!AuthenticationProvider.isLoggedIn()) return;
 
         this.user = AuthenticationProvider.getUser();
         const favorites: Array<ILIASObject> =
@@ -259,6 +260,13 @@ export class SynchronizationService {
     async processOfflineSyncQueue(): Promise<void> {
         if (!window.navigator.onLine) {
             await this.resetOfflineSynchronization();
+            return;
+        }
+
+        if (!AuthenticationProvider.isLoggedIn()) {
+            this.syncOfflineQueue = [];
+            this.syncOfflineQueueCnt = 0;
+            SynchronizationService.state.loadingOfflineContent = false;
             return;
         }
 
