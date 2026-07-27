@@ -56,10 +56,10 @@
         <allow-intent href="itms:*"/>
         <allow-intent href="itms-apps:*"/>
         <edit-config file="*-Info.plist" mode="merge" target="NSLocationWhenInUseUsageDescription">
-            <string>To locate you</string>
+            <string>IACUBUS uses your location to show your position on LearnPlace maps and to detect when you are near a LearnPlace, so nearby location-based learning content can be unlocked for you.</string>
         </edit-config>
         <edit-config file="*-Info.plist" mode="merge" target="NSPhotoLibraryAddUsageDescription">
-            <string>This permission is required to save photos or movies to your media library.</string>
+            <string>IACUBUS needs access to save images and videos from your ILIAS course materials to your photo library when you choose to export or download them.</string>
         </edit-config>
         <icon height="57" src="resources/ios/icon/icon.png" width="57"/>
         <icon height="114" src="resources/ios/icon/icon@2x.png" width="114"/>
