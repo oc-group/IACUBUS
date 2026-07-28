@@ -1,5 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { TranslateModule } from "@ngx-translate/core";
 
 import { TabsPage } from "./tabs.page";
@@ -11,7 +11,7 @@ describe("TabsPage", () => {
 
     let spyNavController: jasmine.Spy;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         spyNavController = jasmine.createSpyObj(NavController.name, [
             "navigateForward",
         ]);

@@ -1,4 +1,3 @@
-const { EEXIST } = require("constants");
 const fs = require("fs");
 const path = require("path");
 
@@ -21,7 +20,7 @@ function symLink(PATH_TO, PATH_FROM) {
             return;
         }
     } catch (err) {
-        if (err.errno !== EEXIST) {
+        if (err.code !== "EEXIST") {
             console.error(
                 `"Error during symlink from ${PATH_FROM} to ${PATH_TO}`
             );

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { IonicModule } from "@ionic/angular";
 
 import { IlObjIconComponent } from "./il-obj-icon.component";
@@ -16,7 +16,7 @@ describe("IlObjIconComponent", () => {
     const spyFeaturePolicy: jasmine.SpyObj<FeaturePolicyService> =
         createSpyObject(FeaturePolicyService);
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [IlObjIconComponent],
             imports: [IonicModule.forRoot()],

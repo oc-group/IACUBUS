@@ -355,7 +355,7 @@ export class ObjectListPage {
      */
     async waitForOfflineSync(): Promise<void> {
         while (this.state.loadingOffline)
-            await new Promise((resolve, reject) => {
+            await new Promise<void>((resolve) => {
                 const wait: NodeJS.Timeout = setTimeout(() => {
                     clearTimeout(wait);
                     this.updatePageState(false);
