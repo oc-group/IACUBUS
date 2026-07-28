@@ -1,10 +1,5 @@
-import {
-    HttpClient as Http,
-    HttpHeaders,
-    HttpParams,
-    HttpResponse as Response,
-    XhrFactory,
-} from "@angular/common/http";
+
+import { XhrFactory } from '@angular/common';import { HttpClient as Http, HttpHeaders, HttpParams, HttpResponse as Response } from "@angular/common/http";
 /** angular */
 import { Injectable } from "@angular/core";
 import * as HttpStatus from "http-status-codes";
