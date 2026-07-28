@@ -1,8 +1,8 @@
 /** angular */
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
-import { AppVersion } from "@ionic-native/app-version/ngx";
-/** ionic-native */
+import { AppVersion } from "@awesome-cordova-plugins/app-version/ngx";
+/** cordova plugins */
 import {
     ModalController,
     NavController,

@@ -1,8 +1,8 @@
 /** angular */
 import { Inject, Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-/** ionic-native */
-import { File, FileEntry, Flags } from "@ionic-native/file/ngx";
+/** cordova plugins */
+import { File, FileEntry, Flags } from "@awesome-cordova-plugins/file/ngx";
 /** ilias */
 import {
     ClientCredentials,

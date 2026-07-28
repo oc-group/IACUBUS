@@ -1,5 +1,5 @@
 import { TestBed } from "@angular/core/testing";
-import { Network } from "@ionic-native/network/ngx";
+import { Network } from "@awesome-cordova-plugins/network/ngx";
 import { createSpyObject } from "../../test.util.spec";
 
 import { NetworkProvider } from "./network.provider";
@@ -18,6 +18,7 @@ describe("NetworkProvider", () => {
         CELL_2G: "",
         CELL_3G: "",
         CELL_4G: "",
+        CELL_5G: "",
         CELL: "",
         NONE: "none",
     };

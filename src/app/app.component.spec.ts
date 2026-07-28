@@ -2,7 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 import { TestBed, waitForAsync } from "@angular/core/testing";
 
 import { Platform } from "@ionic/angular";
-import { StatusBar } from "@ionic-native/status-bar/ngx";
+import { StatusBar } from "@awesome-cordova-plugins/status-bar/ngx";
 
 import { AppComponent } from "./app.component";
 
