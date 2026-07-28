@@ -13,8 +13,8 @@ const fs = require('fs');
 const path = require('path');
 
 const files = [
-    'platforms/ios/IACUBUS/Plugins/cordova-plugin-advanced-http/SM_AFNetworkReachabilityManager.m',
-    'platforms/ios/IACUBUS/Plugins/cordova-plugin-advanced-http/SM_AFHTTPSessionManager.m'
+    'platforms/ios/App/Plugins/cordova-plugin-advanced-http/SM_AFNetworkReachabilityManager.m',
+    'platforms/ios/App/Plugins/cordova-plugin-advanced-http/SM_AFHTTPSessionManager.m'
 ];
 
 module.exports = function (context) {
