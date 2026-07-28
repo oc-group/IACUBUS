@@ -10,6 +10,7 @@
         "experimentalDecorators": true,
         "downlevelIteration": true,
         "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true,
         "target": "es2015",
         "lib": ["es2018", "es2020", "dom"],
         "types": ["node"]

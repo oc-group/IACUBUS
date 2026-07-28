@@ -49,6 +49,7 @@ import {
     combineLatest,
     merge,
     defer,
+    firstValueFrom,
 } from "rxjs";
 import { TextblockEntity } from "../../../entity/learnplace/textblock.entity";
 import { PictureBlockEntity } from "../../../entity/learnplace/pictureBlock.entity";
@@ -140,13 +141,13 @@ export class RestLearnplaceLoader implements LearnplaceLoader {
             return;
         }
 
-        const lpEntity: Promise<LearnplaceEntity> = from(
-            this.learnplaceRepository.findByObjectIdAndUserId(
-                objectId,
-                user.get().id
-            )
-        )
-            .pipe(
+        const lpEntity: Promise<LearnplaceEntity> = firstValueFrom(
+            from(
+                this.learnplaceRepository.findByObjectIdAndUserId(
+                    objectId,
+                    user.get().id
+                )
+            ).pipe(
                 mergeMap((lp: Optional<LearnplaceEntity>) => {
                     return defer(() =>
                         this.learnplaceAPI.getLearnPlace(objectId)
@@ -207,7 +208,7 @@ export class RestLearnplaceLoader implements LearnplaceLoader {
                     );
                 })
             )
-            .toPromise();
+        );
 
         try {
             await this.learnplaceRepository.save(await lpEntity);
@@ -300,33 +301,43 @@ export class RestLearnplaceLoader implements LearnplaceLoader {
             ).pipe(mergeAll());
 
         // tslint:disable-next-line: deprecation
-        return combineLatest(
-            learnplaceEntity,
-            visitJournalEntities,
-            textBlockEntities,
-            pictureBlockEntities,
-            linkBlockEntities,
-            videoBlockEntities,
-            accordionBlockEntities,
-            (
-                entity,
-                visitJournal,
-                textBlocks,
-                pictureBlocks,
-                linkBlocks,
-                videoBlocks,
-                accordionBlocks
-            ) =>
-                entity.applies(function (): void {
-                    this.visitJournal = visitJournal;
-                    this.textBlocks = textBlocks;
-                    this.pictureBlocks = pictureBlocks;
-                    this.linkBlocks = linkBlocks;
-                    this.videoBlocks = videoBlocks;
-                    this.accordionBlocks = accordionBlocks;
-                })
-        )
-            .pipe(
+        return firstValueFrom(
+            combineLatest([
+                learnplaceEntity,
+                visitJournalEntities,
+                textBlockEntities,
+                pictureBlockEntities,
+                linkBlockEntities,
+                videoBlockEntities,
+                accordionBlockEntities,
+            ]).pipe(
+                map(
+                    ([
+                        entity,
+                        visitJournal,
+                        textBlocks,
+                        pictureBlocks,
+                        linkBlocks,
+                        videoBlocks,
+                        accordionBlocks,
+                    ]: [
+                        LearnplaceEntity,
+                        Array<VisitJournalEntity>,
+                        Array<TextblockEntity>,
+                        Array<PictureBlockEntity>,
+                        Array<LinkblockEntity>,
+                        Array<VideoBlockEntity>,
+                        Array<AccordionEntity>
+                    ]) =>
+                        entity.applies(function (this: LearnplaceEntity): void {
+                            this.visitJournal = visitJournal;
+                            this.textBlocks = textBlocks;
+                            this.pictureBlocks = pictureBlocks;
+                            this.linkBlocks = linkBlocks;
+                            this.videoBlocks = videoBlocks;
+                            this.accordionBlocks = accordionBlocks;
+                        })
+                ),
                 mergeMap((it) => from(this.learnplaceRepository.save(it))),
                 mergeMap((it) => EMPTY),
                 catchError((error, _) => {
@@ -361,8 +372,9 @@ export class RestLearnplaceLoader implements LearnplaceLoader {
                         )
                     );
                 })
-            )
-            .toPromise();
+            ),
+            { defaultValue: undefined }
+        );
     }
 
     /**
@@ -468,60 +480,79 @@ export class RestLearnplaceLoader implements LearnplaceLoader {
                 )
             ).pipe(mergeAll());
 
-        return combineLatest(
-            learnplace,
-            user,
-            learnplaceEntity,
-            visitJournalEntities,
-            textBlockEntities,
-            pictureBlockEntities,
-            linkBlockEntities,
-            videoBlockEntities,
-            accordionBlockEntities,
-            (
+        return firstValueFrom(
+            combineLatest([
                 learnplace,
                 user,
-                entity,
-                visitJournal,
-                textBlocks,
-                pictureBlocks,
-                linkBlocks,
-                videoBlocks,
-                accordionBlocks
-            ) =>
-                entity.applies(function (): void {
-                    this.objectId = learnplace.objectId;
-                    this.user = Promise.resolve(user.get());
+                learnplaceEntity,
+                visitJournalEntities,
+                textBlockEntities,
+                pictureBlockEntities,
+                linkBlockEntities,
+                videoBlockEntities,
+                accordionBlockEntities,
+            ]).pipe(
+                map(
+                    ([
+                        learnplace,
+                        user,
+                        entity,
+                        visitJournal,
+                        textBlocks,
+                        pictureBlocks,
+                        linkBlocks,
+                        videoBlocks,
+                        accordionBlocks,
+                    ]: [
+                        LearnPlace,
+                        Optional<UserEntity>,
+                        LearnplaceEntity,
+                        Array<VisitJournalEntity>,
+                        Array<TextblockEntity>,
+                        Array<PictureBlockEntity>,
+                        Array<LinkblockEntity>,
+                        Array<VideoBlockEntity>,
+                        Array<AccordionEntity>
+                    ]) =>
+                        entity.applies(function (this: LearnplaceEntity): void {
+                            this.objectId = learnplace.objectId;
+                            this.user = Promise.resolve(user.get());
 
-                    this.map = Optional.ofNullable(this.map)
-                        .orElse(new MapEntity())
-                        .applies(function (): void {
-                            this.zoom = learnplace.map.zoomLevel;
-                            this.visibility = new VisibilityEntity().applies(
-                                function (): void {
-                                    this.value = learnplace.map.visibility;
-                                }
-                            );
-                        });
+                            this.map = Optional.ofNullable(this.map)
+                                .orElse(new MapEntity())
+                                .applies(function (): void {
+                                    this.zoom = learnplace.map.zoomLevel;
+                                    this.visibility =
+                                        new VisibilityEntity().applies(
+                                            function (): void {
+                                                this.value =
+                                                    learnplace.map.visibility;
+                                            }
+                                        );
+                                });
 
-                    this.location = Optional.ofNullable(this.location)
-                        .orElse(new LocationEntity())
-                        .applies(function (): void {
-                            this.latitude = learnplace.location.latitude;
-                            this.longitude = learnplace.location.longitude;
-                            this.radius = learnplace.location.radius;
-                            this.elevation = learnplace.location.elevation;
-                        });
+                            this.location = Optional.ofNullable(
+                                this.location
+                            )
+                                .orElse(new LocationEntity())
+                                .applies(function (): void {
+                                    this.latitude =
+                                        learnplace.location.latitude;
+                                    this.longitude =
+                                        learnplace.location.longitude;
+                                    this.radius = learnplace.location.radius;
+                                    this.elevation =
+                                        learnplace.location.elevation;
+                                });
 
-                    this.visitJournal = visitJournal;
-                    this.textBlocks = textBlocks;
-                    this.pictureBlocks = pictureBlocks;
-                    this.linkBlocks = linkBlocks;
-                    this.videoBlocks = videoBlocks;
-                    this.accordionBlocks = accordionBlocks;
-                })
-        )
-            .pipe(
+                            this.visitJournal = visitJournal;
+                            this.textBlocks = textBlocks;
+                            this.pictureBlocks = pictureBlocks;
+                            this.linkBlocks = linkBlocks;
+                            this.videoBlocks = videoBlocks;
+                            this.accordionBlocks = accordionBlocks;
+                        })
+                ),
                 mergeMap((it) => from(this.learnplaceRepository.save(it))),
                 mergeMap((_) => EMPTY), // we want to emit void, so we map the save observable to an empty one
                 catchError((error, _) => {
@@ -556,8 +587,9 @@ export class RestLearnplaceLoader implements LearnplaceLoader {
                         )
                     );
                 })
-            )
-            .toPromise();
+            ),
+            { defaultValue: undefined }
+        );
     }
 }
 

@@ -1,6 +1,7 @@
 /** angular */
 import { Injectable, InjectionToken } from "@angular/core";
 import { TranslateService } from "@ngx-translate/core";
+import { firstValueFrom } from "rxjs";
 import { AuthenticationProvider } from "../providers/authentication.provider";
 /** misc */
 import { HttpClient, HttpResponse } from "../providers/http";
@@ -118,9 +119,9 @@ export class ILIASConfigProvider implements ConfigProvider {
             accessTokenTTL: installation.accessTokenTTL,
             privacyPolicy: installation.privacyPolicy
                 ? installation.privacyPolicy
-                : `https://deepportal.hq.nato.int/eacademy/${await this.translate
-                      .get("privacy")
-                      .toPromise()}/`,
+                : `https://deepportal.hq.nato.int/eacademy/${await firstValueFrom(
+                      this.translate.get("privacy")
+                  )}/`,
         };
 
         if (isDefined(installation)) {

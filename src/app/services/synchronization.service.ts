@@ -3,7 +3,7 @@ import { Inject, Injectable } from "@angular/core";
 import { FileEntry } from "@awesome-cordova-plugins/file";
 import { AlertController } from "@ionic/angular";
 import { TranslateService } from "@ngx-translate/core";
-import { from, merge, Observable } from "rxjs";
+import { firstValueFrom, from, merge, Observable } from "rxjs";
 import { OfflineException } from "../exceptions/OfflineException";
 import { LearningModuleLoader } from "../learningmodule/services/learning-module-loader";
 import { LEARNING_MODULE_MANAGER } from "../learningmodule/services/learning-module-manager";
@@ -396,7 +396,7 @@ export class SynchronizationService {
                         `Encountered some problem in method 'downloadContainerContent' with element ${container.title}, reason: ${reason}`
                 );
             });
-        await this.downloadLearnplaces(iliasObjects).toPromise();
+        await firstValueFrom(this.downloadLearnplaces(iliasObjects));
         await this.downloadLearningModules(iliasObjects);
         return syncResults;
     }

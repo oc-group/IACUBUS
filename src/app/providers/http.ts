@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
 import * as HttpStatus from "http-status-codes";
 /** misc */
 import { Validator, ValidatorResult } from "jsonschema";
-import { throwError as observableThrowError } from "rxjs";
+import { firstValueFrom, throwError as observableThrowError } from "rxjs";
 import { catchError, retry, tap } from "rxjs/operators";
 import { IllegalStateError } from "../error/errors";
 /** logging */
@@ -41,9 +41,8 @@ export class HttpClient {
      */
     async get(url: string, options?: RequestOptions): Promise<HttpResponse> {
         this.log.trace(() => `Http GET request to: ${url}`);
-        const response: Response<ArrayBuffer> = await this.http
-            .get(url, toAngularOptions(options))
-            .pipe(
+        const response: Response<ArrayBuffer> = await firstValueFrom(
+            this.http.get(url, toAngularOptions(options)).pipe(
                 tap(
                     (_) =>
                         this.log.trace(
@@ -69,7 +68,7 @@ export class HttpClient {
                     );
                 })
             )
-            .toPromise();
+        );
 
         return new HttpResponse(response);
     }
@@ -90,9 +89,8 @@ export class HttpClient {
         options?: RequestOptions
     ): Promise<HttpResponse> {
         this.log.trace(() => `Http POST request to: ${url}`);
-        const response: Response<ArrayBuffer> = await this.http
-            .post(url, body, toAngularOptions(options))
-            .pipe(
+        const response: Response<ArrayBuffer> = await firstValueFrom(
+            this.http.post(url, body, toAngularOptions(options)).pipe(
                 tap(
                     (_) =>
                         this.log.trace(
@@ -119,7 +117,7 @@ export class HttpClient {
                     );
                 })
             )
-            .toPromise();
+        );
 
         return new HttpResponse(response);
     }

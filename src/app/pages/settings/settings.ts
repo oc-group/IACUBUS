@@ -8,7 +8,7 @@ import {
 } from "@ionic/angular";
 import { TranslateService } from "@ngx-translate/core";
 import { load } from "dotenv";
-import { Observable, ReplaySubject } from "rxjs";
+import { Observable, ReplaySubject, firstValueFrom } from "rxjs";
 import { map } from "rxjs/operators";
 /** misc */
 import { CONFIG_PROVIDER, ConfigProvider } from "../../config/ilias-config";
@@ -129,9 +129,9 @@ export class SettingsPage implements OnInit, OnDestroy {
 
     private async showFilesDeletedToast(): Promise<void> {
         const toast: HTMLIonToastElement = await this.toast.create({
-            message: await this.translate
-                .get("settings.files_deleted")
-                .toPromise(),
+            message: await firstValueFrom(
+                this.translate.get("settings.files_deleted")
+            ),
             duration: 3000,
         });
         await toast.present();
@@ -139,7 +139,9 @@ export class SettingsPage implements OnInit, OnDestroy {
 
     private async showFilesDeletingToast(): Promise<void> {
         const toast: HTMLIonToastElement = await this.toast.create({
-            message: await this.translate.get("Deleting files").toPromise(),
+            message: await firstValueFrom(
+                this.translate.get("Deleting files")
+            ),
             duration: 2000,
         });
 
