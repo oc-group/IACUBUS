@@ -75,7 +75,7 @@ export class IliasObjectService {
             return localObjects;
         } catch (error) {
             // We can't rethrow the error because some of the installation don't have the REST Plugin upgrades jet ... (19.08.2020)
-            if (!!error.prototype) {
+            if (error.prototype) {
                 this.log.warn(
                     () =>
                         `Failed to download link block related ilias objects, with error: [error=${error.prototype.name}, message="${error.message}"]`

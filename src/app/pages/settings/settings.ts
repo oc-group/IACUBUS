@@ -102,7 +102,7 @@ export class SettingsPage implements OnInit, OnDestroy {
         );
         this.settings.quotaSize = Math.min(this.settings.quotaSize, 100000);
 
-        if (!!this.settings.userId) {
+        if (this.settings.userId) {
             this.log.debug(() => "Saving settings.");
             try {
                 await this.settings.save();

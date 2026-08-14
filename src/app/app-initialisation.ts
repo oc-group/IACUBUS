@@ -83,7 +83,7 @@ export class AppInitialisation {
             this.language.setLanguage(setting.language);
         } else {
             // get the language of the navigator an check if it is supported. default is de
-            const language: string = !!navigator.language
+            const language: string = navigator.language
                 ? navigator.language
                 : this.FALLBACK_LANGUAGE;
             const languages: ReadonlyArray<string> =

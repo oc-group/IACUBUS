@@ -19,9 +19,9 @@ import { FeaturePolicyService } from "src/app/services/policy/feature-policy.ser
     styleUrls: ["./il-obj-icon.component.scss"],
 })
 export class IlObjIconComponent implements OnInit, AfterViewInit {
-    @Input("presenter") presenter: ILIASObjectPresenter;
-    @Input("ilObject") ilObject: ILIASObject;
-    @Input("size") size: number;
+    @Input() presenter: ILIASObjectPresenter;
+    @Input() ilObject: ILIASObject;
+    @Input() size: number;
 
     @ViewChild("container") container: ElementRef;
 

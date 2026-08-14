@@ -388,7 +388,7 @@ export class SynchronizationService {
         results
             .filter((result) => result.status === "rejected")
             .forEach((result) => {
-                const reason = !!result.reason
+                const reason = result.reason
                     ? (result.reason as Error).message
                     : "unknown";
                 this.log.warn(

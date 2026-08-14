@@ -254,7 +254,7 @@ export class LearnplacePage
     }
 
     destroyMap(): void {
-        if (!!this.elMap) {
+        if (this.elMap) {
             while (this.elMap.elMap.firstChild) {
                 this.elMap.elMap.removeChild(this.elMap.elMap.firstChild);
             }

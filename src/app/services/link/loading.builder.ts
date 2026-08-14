@@ -10,7 +10,7 @@ import {
  *
  * @author Nicolas Schäfli <ns@studer-raimann.ch>
  */
-export interface LoadingLinkBuilder extends Builder<Promise<string>> {}
+export type LoadingLinkBuilder = Builder<Promise<string>>
 
 export const LOADING_LINK_BUILDER: InjectionToken<() => LoadingLinkBuilder> =
     new InjectionToken("token for loading link builder factory");

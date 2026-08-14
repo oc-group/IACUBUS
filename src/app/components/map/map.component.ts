@@ -66,11 +66,11 @@ enum ERRORS {
     styleUrls: ["./map.component.scss"],
 })
 export class MapComponent implements OnInit, OnChanges, OnDestroy {
-    @Input("places") places: Array<MapPlaceModel> = [];
-    @Input("selected") selected: number = 0;
-    @Input("showFullscreen") showFullscreen: boolean = false;
+    @Input() places: Array<MapPlaceModel> = [];
+    @Input() selected: number = 0;
+    @Input() showFullscreen: boolean = false;
 
-    @Output("clickedPlace") clickedPlace = new EventEmitter<MapPlaceModel>();
+    @Output() clickedPlace = new EventEmitter<MapPlaceModel>();
     @Output("fullscreen") clickedFullscreen = new EventEmitter<boolean>();
 
     @ViewChild("map") elMap: HTMLElement;
@@ -163,7 +163,7 @@ export class MapComponent implements OnInit, OnChanges, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        if (!!this.elMap) {
+        if (this.elMap) {
             while (this.elMap.firstChild) {
                 this.elMap.removeChild(this.elMap.firstChild);
             }
