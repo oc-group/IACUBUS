@@ -9,9 +9,6 @@ import {
 } from "@angular/platform-browser-dynamic/testing";
 import { useStandard } from "./standard";
 
-// tslint:disable-next-line:no-any
-declare const require: any;
-
 // Inject object methods.
 useStandard();
 
@@ -24,10 +21,3 @@ getTestBed().initTestEnvironment(
     teardown: { destroyAfterEach: false }
 }
 );
-
-// Then we find all the tests.
-// tslint:disable-next-line:no-any
-const context: any = require.context("./", true, /\.spec\.ts$/);
-
-// And load the modules.
-context.keys().map(context);

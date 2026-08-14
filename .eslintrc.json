@@ -1,0 +1,39 @@
+{
+    "root": true,
+    "ignorePatterns": ["projects/**/*", "www/**/*", "platforms/**/*", "coverage/**/*"],
+    "overrides": [
+        {
+            "files": ["*.ts"],
+            "parserOptions": {
+                "project": ["tsconfig.json", "src/tsconfig.app.json", "src/tsconfig.spec.json"],
+                "createDefaultProgram": true
+            },
+            "extends": [
+                "eslint:recommended",
+                "plugin:@typescript-eslint/recommended",
+                "plugin:@angular-eslint/recommended",
+                "plugin:@angular-eslint/template/process-inline-templates"
+            ],
+            "rules": {
+                "@angular-eslint/directive-selector": ["error", { "type": "attribute", "prefix": "app", "style": "camelCase" }],
+                "@angular-eslint/component-selector": ["error", { "type": "element", "prefix": "app", "style": "kebab-case" }],
+                "@typescript-eslint/explicit-member-accessibility": ["error", { "accessibility": "no-public" }],
+                "@typescript-eslint/no-explicit-any": "error",
+                "@typescript-eslint/no-non-null-assertion": "error",
+                "@typescript-eslint/no-var-requires": "error",
+                "@typescript-eslint/no-floating-promises": ["error", { "ignoreVoid": true }],
+                "@typescript-eslint/no-inferrable-types": "off",
+                "@typescript-eslint/no-namespace": "off",
+                "no-var": "error",
+                "prefer-const": "error",
+                "quotes": ["error", "double", { "avoidEscape": true }],
+                "max-len": ["error", { "code": 150 }]
+            }
+        },
+        {
+            "files": ["*.html"],
+            "extends": ["plugin:@angular-eslint/template/recommended"],
+            "rules": {}
+        }
+    ]
+}
